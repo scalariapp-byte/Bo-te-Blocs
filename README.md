@@ -1,0 +1,47 @@
+# Boîte à Blocs
+
+Construction 3D avec des blocs de couleur unie, dans un monde sans bord, dans le navigateur. Ouvre `index.html` (PC ou téléphone, connexion internet nécessaire pour charger three.js).
+
+| Action | PC | Téléphone |
+|---|---|---|
+| Poser / effacer / peindre / pipette | clic (ou touches 1 à 4) | toucher |
+| Effacer vite | Maj + clic | — |
+| Tourner la vue | glisser | glisser à un doigt |
+| Zoomer | molette | pincer |
+| Avancer dans le monde | clic droit glissé, ZQSD / WASD ou flèches | glisser à deux doigts |
+| Choisir la forme : bloc, demi-bloc, pente, micro-cube, bonhomme | touches 5 à 9 | ligne des formes |
+| Tourner une pente ou un bonhomme | touche R | bouton Tourner |
+| Symétrie (miroir gauche-droite) | touche M | bouton Symétrie |
+| Annuler / rétablir | Ctrl+Z / Ctrl+Y | boutons en haut |
+
+Le monde est infini à l'horizontale (le sol est à la hauteur 0, plafond à 512 blocs). La position affichée en haut à gauche indique où tu es ; le menu « ⋯ » permet de revenir au centre ou d'aller à ta construction.
+
+Formes : un **demi-bloc** fait la moitié de la hauteur d'un bloc, un **micro-cube** fait la moitié d'un bloc dans chaque sens (8 micro-cubes = 1 bloc). Une **pente** monte en s'éloignant de toi ; « Tourner » lui ajoute un quart de tour. La pipette reprend la couleur et la forme.
+
+Accueil : au lancement, un écran d'accueil propose de continuer le dernier monde, d'en créer un nouveau (vide ou avec l'exemple), de gérer « Mes mondes » (jouer, supprimer) ou de lire l'aide. Chaque monde est sauvegardé à part. Le menu « ⋯ » en jeu ramène au menu principal.
+
+Bonshommes : des petits personnages (un bloc et demi de haut) avec un métier choisi au moment de les poser.
+- **Promeneur** : il se balade, monte et descend les marches d'un demi-bloc, passe par une porte de 2 blocs.
+- **Bâtisseur** (il tient un bloc) : il construit une cabane de 3 × 3 blocs devant lui, avec une porte et un toit en pente, pièce par pièce, puis se promène.
+- **Peintre** (il tient un pinceau) : il repeint de la couleur de son haut les blocs qu'il touche en passant.
+- **Guerrier** (épée) : il traque le bonhomme d'une autre couleur le plus proche et l'attaque. Tout bonhomme frappé riposte. 10 points de vie, une barre apparaît après un coup, la vie remonte lentement.
+- **Démolisseur** (marteau) : il va casser les blocs les plus proches.
+
+La couleur d'un bonhomme est son équipe. Deux bonshommes de même couleur qui se croisent font un bébé de leur couleur, avec le métier d'un parent (parfois un autre) ; 80 bonshommes au plus, bouton « Naissances » pour couper. Le bouton pause en haut (ou Espace) fige tout le monde.
+
+Interface : deux onglets en bas, « Construire » (formes) et « Bonshommes » (métiers, naissances), avec les outils en icônes et la palette en commun.
+
+Aucun ne traverse les blocs ; ils tombent si on retire ce qui les porte. Ce qu'ils construisent ou peignent ne passe pas par Annuler. 
+
+Images : le menu « ⋯ » transforme une image PNG ou JPG en mur de pixel art, face à toi (64 px max en micro-cubes, 32 px max en blocs ; les pixels transparents sont ignorés). « Prendre une photo » affiche une image PNG de la vue, à enregistrer par appui long ou clic droit.
+
+La construction est sauvegardée automatiquement dans le navigateur. Le menu « ⋯ » donne un code texte pour la copier ailleurs ou la partager.
+
+## Arènes
+
+Menu principal → **Arènes** : 21 combats tout faits à regarder (guerre des lits à 2 ou 4, le pont, roi de la colline, siège du château, le géant, survie face aux vagues, chacun pour soi, pluie de flèches…). Guerriers à l'épée, archers qui tirent des flèches, casseurs de lit, géant, monstres. Les coups font reculer, une chute de plus de 4 blocs tue, un lit debout fait revenir les morts de son équipe. Le tableau en bas suit les équipes, les lits et le temps ; « Rejouer » relance.
+
+Bâtisseurs : 10 plans au choix (cabane, tour, maison, mur fortifié, pyramide, arbre, pont, statue, fontaine, château) ou « Au hasard », où il enchaîne jusqu'à 5 ouvrages.
+
+Armes : épée, hache (gros dégâts, recul de 2 cases), lance (frappe de plus loin), arc, baguette magique, griffes pour les monstres. Pouvoirs, un par combattant avec recharge : soin, bouclier, boule de feu (dégâts de zone), téléportation derrière l'ennemi, rage (dégâts doublés). Intelligence : il vise l'ennemi le plus faible à portée, les tireurs gardent leurs distances, un blessé se replie vers un allié ou se soigne, chacun esquive en sautant de côté (coups et flèches), saute d'un bloc vers le haut et bondit par-dessus les trous. Virus : dans « Virus » et « Survie », un monstre qui touche un survivant peut le changer en monstre.
+

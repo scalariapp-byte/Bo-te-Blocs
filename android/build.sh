@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Compile Boîte à Blocs en APK hors ligne (WebView + three.js embarqué). Il faut un JDK (17+), curl, unzip et zip.
 #
-#   blocs/android/build.sh   -> dist/blocs.apk
+#   android/build.sh   -> dist/blocs.apk
 set -euo pipefail
 A="$(cd "$(dirname "$0")" && pwd)"
-ROOT="$(dirname "$(dirname "$A")")"
-T="$ROOT/android/.tools"
+ROOT="$(dirname "$A")"
+T="$A/.tools"
 OUT="$A/build"
-[ -x "$T/aapt2" ] && [ -s "$T/signer.jar" ] || "$ROOT/android/fetch-tools.sh"
+[ -x "$T/aapt2" ] && [ -s "$T/signer.jar" ] || "$A/fetch-tools.sh"
 
 rm -rf "$OUT"
 mkdir -p "$OUT/classes" "$OUT/gen" "$OUT/assets/three"
@@ -18,7 +18,7 @@ curl -fsSL --retry 3 https://registry.npmjs.org/three/-/three-0.140.0.tgz | tar 
 cp "$OUT/package/build/three.min.js" "$OUT/package/examples/js/controls/OrbitControls.js" "$OUT/assets/three/"
 sed -e 's#https://cdn.jsdelivr.net/npm/three@0.140.0/build/#three/#' \
     -e 's#https://cdn.jsdelivr.net/npm/three@0.140.0/examples/js/controls/#three/#' \
-    "$ROOT/blocs/index.html" > "$OUT/assets/index.html"
+    "$ROOT/index.html" > "$OUT/assets/index.html"
 
 "$T/aapt2" compile --dir "$A/res" -o "$OUT/res.zip"
 "$T/aapt2" link -o "$OUT/unsigned.apk" -I "$T/android.jar" --manifest "$A/AndroidManifest.xml" \
